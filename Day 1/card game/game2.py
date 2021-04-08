@@ -1,56 +1,41 @@
-# Deck of cards
+# Card game
 import random
+import game1
 
-# Deck generator
-def generate_deck():
-    # suits
-    suits = ['hearts', 'spades', 'clubs', 'diamonds']
-    
-    # numbers/types
-    ranks = ['ace', 'two', 'three', 'four', 'five', 'six',
-             'seven', 'eight', 'nine', 'ten', 'jack', 'queen',
-             'king']
-    
-    # generate all cards
-    # nested for loop
-    deck = []
-    for ix in range(len(ranks)):
-        for suit in suits:
-            rank = ranks[ix]
-            value = ix + 1;
-            deck.append(rank, suit, value)
-    
-    return deck
-    
+# Check if prime
 def is_prime(n):
-    for i in range(sqrt(n)):
+    for i in range(2, n):
         if n % i == 0:
-            return True
-    return False
-    
-# 
+            return False
+    return True
+
+# Main method
 if __name__ == "__main__":
-    print(random.choice(generate_deck()))
-    
-    
-# Prime card game 
+    deck = game1.generate_deck()
 
-deck = generate_deck()
+    won = False
 
-won = False
+    while (not won and len(deck) != 0):
+        print("Draw a card!")
+        drawn_cards = []
+        sum = 0
+        turn_counter = 0
+        while (turn_counter < 3 or len(deck) == 1):
+            input()
+            drawn = random.choice(deck)
+            print("You drew " +
+                str(drawn[0]) + ' of ' + str(drawn[1]) +
+                ' (' + str(drawn[2]) + ')')
+            deck.remove(drawn)
+            turn_counter += 1
+            sum += drawn[2]
+        print("The sum is:", sum)
+        if (is_prime(sum)):
+            print("You won!")
+            won = True
+        else:
+            print("Better luck next time!")
 
-while (not won or len(deck) == 0):
-    print("Draw a card!")
-    drawn_cards = []
-    sum = 0
-    turn_counter = 0
-    while (turn_counter < 3 and len(deck) > 1):
-        input()
-        drawn = random.choice(deck)
-        print("You drew " + drawn[0] + ' of ' + drawn[1] +'(' + drawn[2] + ')')
-        deck.remove(drawn)
-        turn_counter += 1
-        sum += drawn[2]
-    if (len(deck) == 1):
-        # TODO
-    
+    if (not won and len(deck) == 0):
+        print("Sorry, you lost :(")
+        
