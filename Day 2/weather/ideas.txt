@@ -1,0 +1,2 @@
+1. Cache with time interval - 2 hours
+2. Get less precise data
