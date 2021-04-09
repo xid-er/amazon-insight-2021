@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+C:\Users\karli\OneDrive\Documents\Coding\Insight Events\Amazon\amazon-insight-2021\Day 3\rpg-combat-kata-java\.metadata\.plugins\org.eclipse.jdt.core
+2560452285.index
+2930464654.index
